@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div>
+<div style="position: relative">
 
 <aside class="left-side sidebar-offcanvas">
 	<!-- sidebar: style can be found in sidebar.less -->
