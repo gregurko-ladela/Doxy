@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header();?>
 <div style="position: relative">
 
 <aside class="left-side sidebar-offcanvas">
@@ -7,7 +7,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="/wp-content/themes/Doxy/library/images/avatar3.png" class="img-circle" alt="User Image" />
+				<img src="<?php echo get_template_directory_uri();?>/library/images/avatar3.png" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
 				<p>Hello, Jane</p>
