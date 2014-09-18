@@ -8,7 +8,7 @@
 			<!-- Sidebar user panel -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img src="img/avatar3.png" class="img-circle" alt="User Image" />
+					<img src="<?php echo get_template_directory_uri();?>/library/images/avatar3.png" class="img-circle" alt="User Image" />
 				</div>
 				<div class="pull-left info">
 					<p>Hello, Jane</p>
