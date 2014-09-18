@@ -42,29 +42,36 @@
 	<body <?php body_class(); ?>>
 
     <header class="header">
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-left: 0px;">
 
-      <nav role="navigation">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-            <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+	    <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" class="logo">
+		    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+		    <?php bloginfo('name'); ?>
+	    </a>
+    <!-- Sidebar toggle button-->
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+	    <span class="sr-only">Toggle navigation</span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-right" style="margin-right: 50px;">
+	    <div class="container">
+		    <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
+		    <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+			    </button>
+		    </div>
 
-              <a class="navbar-brand" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="homepage"><?php bloginfo('name'); ?></a>
+		    <div class="navbar-collapse collapse navbar-responsive-collapse">
+			    <?php bones_main_nav(); ?>
 
-            </div>
-
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
-              <?php bones_main_nav(); ?>
-
-            </div>
-          </div>
-        </div> 
-        
-      </nav>
-
-		</header> <?php // end header ?>
+		    </div>
+    </div>
+    </nav>
+    </header>
+    <?php // end header ?>

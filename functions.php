@@ -105,6 +105,14 @@ you like. Enjoy!
 */
 
 /************* ACTIVE SIDEBARS ********************/
+// Add specific CSS class by filter
+add_filter( 'body_class', 'my_class_names' );
+function my_class_names( $classes ) {
+	// add 'class-name' to the $classes array
+	$classes[] = 'skin-blue';
+	// return the $classes array
+	return $classes;
+}
 
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
