@@ -133,11 +133,12 @@ function bones_scripts_and_styles() {
     wp_register_script( 'bones-modernizr', get_template_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
     // register main stylesheet
-    wp_register_style( 'bones-stylesheet', get_template_directory_uri() . '/library/css/style.css', array(), '', 'all' );
+    //wp_register_style( 'bones-stylesheet', get_template_directory_uri() . '/library/css/style.css', array(), '', 'all' );
     wp_register_style( 'bones-stylesheet-AdminLTE', get_template_directory_uri() . '/library/css/AdminLTE.css', array(), '', 'all' );
+    wp_register_style( 'bones-stylesheet-bootstrap', get_template_directory_uri() . '/library/css/bootstrap.min.css', array(), '', 'all' );
 
     // ie-only style sheet
-    wp_register_style( 'bones-ie-only', get_template_directory_uri() . '/library/css/ie.css', array(), '' );
+    //wp_register_style( 'bones-ie-only', get_template_directory_uri() . '/library/css/ie.css', array(), '' );
 
     // FitVid (responsive video)
     wp_register_script( 'fitvids', get_template_directory_uri() . '/library/js/libs/FitVids.js-master/jquery.fitvids.js', array('jquery'), '', TRUE );
@@ -150,13 +151,14 @@ function bones_scripts_and_styles() {
     }
 
     //adding scripts file in the footer
-    wp_register_script( 'bones-js', get_template_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+    wp_register_script( 'bones-js', get_template_directory_uri() . '/library/js/app.js', array( 'jquery' ), '', true );
 
 
     // enqueue styles and scripts
     wp_enqueue_script( 'bones-modernizr' );
     wp_enqueue_style( 'bones-stylesheet' );
     wp_enqueue_style( 'bones-stylesheet-AdminLTE' );
+    wp_enqueue_style( 'bones-stylesheet-bootstrap' );
     wp_enqueue_style( 'bones-ie-only' );
 
     $wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
