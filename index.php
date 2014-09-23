@@ -6,7 +6,7 @@
 		<!-- sidebar: style can be found in sidebar.less -->
 		<section class="sidebar">
 			<ul class="sidebar-menu">
-				<?php dynamic_sidebar( 'sidebar1' ); ?>
+				<?php get_sidebar(); ?>
 			</ul>
 		</section>
 		<!-- /.sidebar -->
