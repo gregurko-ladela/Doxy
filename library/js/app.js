@@ -139,8 +139,12 @@ jQuery(function() {
         var el = jQuery(this);
         if (el.attr('id') !== 'search-2'){
             el.addClass('treeview');
+            if (el.children().eq(1).is('div')){
+                el.append(el.children().eq(1).children().first());
+                el.children().eq(1).remove();
+            }
             el.children().eq(1).addClass('treeview-menu');
-            el.prepend('<a href="#"><i class="fa fa-bar-chart-o"></i><span>' + el.find('.widgettitle').html() + '</span><i class="fa fa-angle-left pull-right"></i></a>');
+            el.prepend('<a href="#"><span>' + el.find('.widgettitle').html() + '</span><i class="fa fa-angle-left pull-right"></i></a>');
             el.find('.widgettitle').remove();
         }
     });
@@ -587,44 +591,60 @@ jQuery(window).load(function() {
 (function(jQuery) {
     "use strict";
 
+    function preapre_el(el){
+            var btn = el.children("a").first();
+            var menu = el.children(".treeview-menu").first();
+
+            if (!menu.children().length){
+                var menu = el.children(".sub-menu");
+                el.children().first().html('<span>' + el.children().first().html() + '</span><i class="fa fa-angle-left pull-right"></i>');
+                el.children(".sub-menu").addClass('treeview-menu');
+                el.children(".sub-menu").css('margin-left', '10px');
+            }
+            var isActive = el.hasClass('active');
+
+            //initialize already active menus
+            if (isActive) {
+                menu.show();
+                btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
+            }
+            //Slide open or close the menu on link click
+            btn.click(function(e) {
+                e.preventDefault();
+                if (isActive) {
+                    //Slide up to close menu
+                    menu.slideUp();
+                    isActive = false;
+                    btn.children(".fa-angle-down").first().removeClass("fa-angle-down").addClass("fa-angle-left");
+                    btn.parent("li").removeClass("active");
+                } else {
+                    //Slide down to open menu
+                    menu.slideDown();
+                    isActive = true;
+                    btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
+                    btn.parent("li").addClass("active");
+                }
+            });
+
+            /* Add margins to submenu elements to give it a tree look */
+//            menu.find("li > a").each(function() {
+//                var pad = parseInt(el.css("margin-left")) + 10;
+//
+//                el.css({"margin-left": pad + "px"});
+//            });
+        el.children().eq(1).children().each(function(){
+            if (jQuery(this).children().eq(1).hasClass('sub-menu')){
+                preapre_el(jQuery(this));
+            }
+        });
+    }
+
     jQuery.fn.tree = function() {
 
         return this.each(function() {
             jQuery(this).children().each(function(){
                 if (!jQuery(this).hasClass('widget_search')){
-                    var btn = jQuery(this).children("a").first();
-                    var menu = jQuery(this).children(".treeview-menu").first();
-                    var isActive = jQuery(this).hasClass('active');
-
-                    //initialize already active menus
-                    if (isActive) {
-                        menu.show();
-                        btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
-                    }
-                    //Slide open or close the menu on link click
-                    btn.click(function(e) {
-                        e.preventDefault();
-                        if (isActive) {
-                            //Slide up to close menu
-                            menu.slideUp();
-                            isActive = false;
-                            btn.children(".fa-angle-down").first().removeClass("fa-angle-down").addClass("fa-angle-left");
-                            btn.parent("li").removeClass("active");
-                        } else {
-                            //Slide down to open menu
-                            menu.slideDown();
-                            isActive = true;
-                            btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
-                            btn.parent("li").addClass("active");
-                        }
-                    });
-
-                    /* Add margins to submenu elements to give it a tree look */
-                    menu.find("li > a").each(function() {
-                        var pad = parseInt(jQuery(this).css("margin-left")) + 10;
-
-                        jQuery(this).css({"margin-left": pad + "px"});
-                    });
+                    preapre_el(jQuery(this));
                 }
             });
         });
