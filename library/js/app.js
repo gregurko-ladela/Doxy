@@ -594,7 +594,6 @@ jQuery(window).load(function() {
     function preapre_el(el){
             var btn = el.children("a").first();
             var menu = el.children(".treeview-menu").first();
-
             if (!menu.children().length){
                 var menu = el.children(".sub-menu");
                 el.children().first().html('<span>' + el.children().first().html() + '</span><i class="fa fa-angle-left pull-right"></i>');
@@ -634,6 +633,9 @@ jQuery(window).load(function() {
 //            });
         el.children().eq(1).children().each(function(){
             if (jQuery(this).children().eq(1).hasClass('sub-menu')){
+                preapre_el(jQuery(this));
+            }else if(jQuery(this).children().eq(1).hasClass('children')){
+                jQuery(this).children().eq(1).addClass('sub-menu');
                 preapre_el(jQuery(this));
             }
         });
