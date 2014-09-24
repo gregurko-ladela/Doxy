@@ -137,7 +137,7 @@ jQuery(function() {
 
     jQuery('.sidebar-menu').children().each(function(){
         var el = jQuery(this);
-        if (el.attr('id') !== 'search-2'){
+        if (el.hasClass('widget_pages') || el.hasClass('widget_nav_menu')){
             el.addClass('treeview');
             if (el.children().eq(1).is('div')){
                 el.append(el.children().eq(1).children().first());
@@ -591,62 +591,56 @@ jQuery(window).load(function() {
 (function(jQuery) {
     "use strict";
 
-    function preapre_el(el){
-            var btn = el.children("a").first();
-            var menu = el.children(".treeview-menu").first();
-            if (!menu.children().length){
-                var menu = el.children(".sub-menu");
-                el.children().first().html('<span>' + el.children().first().html() + '</span><i class="fa fa-angle-left pull-right"></i>');
-                el.children(".sub-menu").addClass('treeview-menu');
-                el.children(".sub-menu").css('margin-left', '10px');
-            }
-            var isActive = el.hasClass('active');
+    function preapre_el(el, level){
+        var btn = el.children("a").first();
+        var menu = el.children(".treeview-menu").first();
+        if (!menu.children().length){
+            var menu = el.children(".sub-menu");
+            el.children().first().html('<span>' + el.children().first().html() + '</span><i class="fa fa-angle-left pull-right"></i>');
+            el.children(".sub-menu").addClass('treeview-menu');
+        }
+        var isActive = el.hasClass('active');
 
-            //initialize already active menus
+        //initialize already active menus
+        if (isActive) {
+            menu.show();
+            btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
+        }
+        //Slide open or close the menu on link click
+        btn.click(function(e) {
+            e.preventDefault();
             if (isActive) {
-                menu.show();
+                //Slide up to close menu
+                menu.slideUp();
+                isActive = false;
+                btn.children(".fa-angle-down").first().removeClass("fa-angle-down").addClass("fa-angle-left");
+                btn.parent("li").removeClass("active");
+            } else {
+                //Slide down to open menu
+                menu.slideDown();
+                isActive = true;
                 btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
+                btn.parent("li").addClass("active");
             }
-            //Slide open or close the menu on link click
-            btn.click(function(e) {
-                e.preventDefault();
-                if (isActive) {
-                    //Slide up to close menu
-                    menu.slideUp();
-                    isActive = false;
-                    btn.children(".fa-angle-down").first().removeClass("fa-angle-down").addClass("fa-angle-left");
-                    btn.parent("li").removeClass("active");
-                } else {
-                    //Slide down to open menu
-                    menu.slideDown();
-                    isActive = true;
-                    btn.children(".fa-angle-left").first().removeClass("fa-angle-left").addClass("fa-angle-down");
-                    btn.parent("li").addClass("active");
-                }
-            });
+        });
 
-            /* Add margins to submenu elements to give it a tree look */
-//            menu.find("li > a").each(function() {
-//                var pad = parseInt(el.css("margin-left")) + 10;
-//
-//                el.css({"margin-left": pad + "px"});
-//            });
         el.children().eq(1).children().each(function(){
+            jQuery(this).children().first().css('padding-left' , (37 + level * 15) + 'px');
+
             if (jQuery(this).children().eq(1).hasClass('sub-menu')){
-                preapre_el(jQuery(this));
+                preapre_el(jQuery(this), level+1);
             }else if(jQuery(this).children().eq(1).hasClass('children')){
                 jQuery(this).children().eq(1).addClass('sub-menu');
-                preapre_el(jQuery(this));
+                preapre_el(jQuery(this), level+1);
             }
         });
     }
 
     jQuery.fn.tree = function() {
-
         return this.each(function() {
             jQuery(this).children().each(function(){
-                if (!jQuery(this).hasClass('widget_search')){
-                    preapre_el(jQuery(this));
+                if (jQuery(this).hasClass('widget_pages') || jQuery(this).hasClass('widget_nav_menu')){
+                    preapre_el(jQuery(this), 0);
                 }
             });
         });
