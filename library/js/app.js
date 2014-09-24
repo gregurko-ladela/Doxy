@@ -151,6 +151,9 @@ jQuery(function() {
 
     /* Sidebar tree view */
     jQuery(".sidebar .sidebar-menu").tree();
+
+    jQuery('.current_page_item').parentsUntil( jQuery( this ), ".treeview-menu" ).css( "display", "block");
+
 });
 function fix_sidebar() {
     //Make sure the body tag has the .fixed class
