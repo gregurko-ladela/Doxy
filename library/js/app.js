@@ -162,7 +162,8 @@ jQuery(function() {
         }
     });
 
-
+    jQuery('.widget_search').find('.btn-primary').html('<i class="fa fa-search"></i>').addClass('btn-flat').removeClass('btn-primary');
+    jQuery('.widget_search').find('.form-inline').addClass('sidebar-form');
 });
 function fix_sidebar() {
     //Make sure the body tag has the .fixed class
