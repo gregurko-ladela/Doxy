@@ -153,6 +153,15 @@ jQuery(function() {
     jQuery(".sidebar .sidebar-menu").tree();
 
     jQuery('.current_page_item').parentsUntil( jQuery( this ), ".treeview-menu" ).css( "display", "block");
+    jQuery('.current_page_item').parentsUntil( jQuery( this ), ".widget" ).children().first().children().eq(1).removeClass('fa-angle-left').addClass('fa-angle-down');
+    jQuery('.current_page_ancestor').each(function(){
+        var parent_node = jQuery(this).children().first().children().eq(1);
+        if (parent_node.hasClass('fa-angle-left')){
+            parent_node.removeClass('fa-angle-left');
+            parent_node.addClass('fa-angle-down');
+        }
+    });
+
 
 });
 function fix_sidebar() {
@@ -628,7 +637,7 @@ jQuery(window).load(function() {
         });
 
         el.children().eq(1).children().each(function(){
-            jQuery(this).children().first().css('padding-left' , (37 + level * 15) + 'px');
+            jQuery(this).children().first().css('padding-left' , (level * 15) + 'px');
 
             if (jQuery(this).children().eq(1).hasClass('sub-menu')){
                 preapre_el(jQuery(this), level+1);
@@ -643,7 +652,7 @@ jQuery(window).load(function() {
         return this.each(function() {
             jQuery(this).children().each(function(){
                 if (jQuery(this).hasClass('widget_pages') || jQuery(this).hasClass('widget_nav_menu')){
-                    preapre_el(jQuery(this), 0);
+                    preapre_el(jQuery(this), 1);
                 }
             });
         });
