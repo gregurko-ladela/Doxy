@@ -149,7 +149,6 @@ jQuery(function() {
         }
     });
 
-    /* Sidebar tree view */
     jQuery(".sidebar .sidebar-menu").tree();
 
     jQuery('.current_page_item').parentsUntil( jQuery( this ), ".treeview-menu" ).css( "display", "block");
@@ -653,6 +652,9 @@ jQuery(window).load(function() {
         return this.each(function() {
             jQuery(this).children().each(function(){
                 if (jQuery(this).hasClass('widget_pages') || jQuery(this).hasClass('widget_nav_menu')){
+                    jQuery(this).children().eq(0).css('display', 'none');
+                    jQuery(this).children().eq(1).css('display', 'block');
+                    jQuery(this).children().eq(1).removeClass('treeview-menu').addClass('sidebar-menu');
                     preapre_el(jQuery(this), 1);
                 }
             });

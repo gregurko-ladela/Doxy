@@ -642,17 +642,17 @@ body > .header .logo .icon {
   margin: 0;
   padding: 0;
 }
-.sidebar .sidebar-menu > div {
+.sidebar .sidebar-menu > li {
   margin: 0;
   padding: 0;
 }
-.sidebar .sidebar-menu > div > a {
+.sidebar .sidebar-menu > li > a {
   padding: 12px 5px 12px 15px;
   display: block;
 }
-.sidebar .sidebar-menu > div > a > .fa,
-.sidebar .sidebar-menu > div > a > .glyphicon,
-.sidebar .sidebar-menu > div > a > .ion {
+.sidebar .sidebar-menu > li > a > .fa,
+.sidebar .sidebar-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu > li > a > .ion {
   width: 20px;
 }
 .sidebar .sidebar-menu .treeview-menu {
@@ -2597,25 +2597,25 @@ Component: timeline
 .skin-blue .sidebar {
   border-bottom: 1px solid #fff;
 }
-.skin-blue .sidebar > .sidebar-menu > div {
+.sidebar-menu > li {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #dbdbdb;
 }
-.skin-blue .sidebar > .sidebar-menu > div:first-of-type {
+.sidebar-menu > li:first-of-type {
   border-top: 1px solid #dbdbdb;
 }
-.skin-blue .sidebar > .sidebar-menu > div:first-of-type > a {
+.sidebar-menu > li:first-of-type > a {
   border-top: 1px solid #fff;
 }
-.skin-blue .sidebar > .sidebar-menu > div > a {
+.sidebar-menu > li > a {
   margin-right: 1px;
 }
-.skin-blue .sidebar > .sidebar-menu > div > a:hover,
-.skin-blue .sidebar > .sidebar-menu > div.active > a {
+.sidebar-menu > li > a:hover,
+.sidebar-menu > li.active > a {
   color: #222;
   background: #f9f9f9;
 }
-.skin-blue .sidebar > .sidebar-menu > div > .treeview-menu {
+.sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #f9f9f9;
 }
