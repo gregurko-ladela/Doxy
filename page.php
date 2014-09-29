@@ -17,15 +17,13 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1 class="page-title entry-title" itemprop="headline"><?php the_title(); ?></h1>
+			<?php get_template_part( 'breadcrumb' ); ?>
 		</section>
 
 		<!-- Main content -->
 		<section class="content">
 
 			<div id="main" class="col-md-8 clearfix" role="main">
-
-				<?php get_template_part( 'breadcrumb' ); ?>
-
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">

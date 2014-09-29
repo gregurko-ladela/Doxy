@@ -16,16 +16,13 @@
 	<aside class="right-side">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-
+			<h1 class="archive-title h2"><span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?></h1>
 		</section>
 
 		<!-- Main content -->
 		<section class="content">
 
 			<div id="main" class="col-md-8 clearfix" role="main">
-
-				<h1 class="archive-title h2"><span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?></h1>
-
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">

@@ -539,6 +539,7 @@ body > .header .logo .icon {
 .right-side > .content-header {
   position: relative;
   padding: 15px 15px 10px 20px;
+    min-height: 55px;
 }
 .right-side > .content-header > h1 {
   margin: 0;
