@@ -26,7 +26,7 @@
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 				<div class="row">
 					<div class="col-md-1"></div>
-					<div class="col-md-10">
+					<div class="col-md-10 box">
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 

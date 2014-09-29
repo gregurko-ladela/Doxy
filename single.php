@@ -16,7 +16,12 @@
 	<aside class="right-side">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-
+			<h1 class="single-title entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+			<p class="byline vcard">
+				by <span class="author"><em><?php echo bones_get_the_author_posts_link() ?></em></span> -
+				<time class="updated" datetime="<?php get_the_time('Y-m-j') ?>"><?php echo get_the_time(get_option('date_format')) ?></time>
+				<span class="sticky-ind pull-right"><i class="fa fa-star"></i></span>
+			</p>
 		</section>
 
 		<!-- Main content -->
@@ -29,18 +34,6 @@
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-
-						<header class="article-header">
-							<div class="titlewrap clearfix">
-								<h1 class="single-title entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-								<p class="byline vcard">
-									by <span class="author"><em><?php echo bones_get_the_author_posts_link() ?></em></span> -
-									<time class="updated" datetime="<?php get_the_time('Y-m-j') ?>"><?php echo get_the_time(get_option('date_format')) ?></time>
-									<span class="sticky-ind pull-right"><i class="fa fa-star"></i></span>
-								</p>
-							</div>
-
-						</header> <?php // end article header ?>
 
 						<?php global $brew_options; ?>
 						<?php if( $brew_options['featured'] == '2' || ( $brew_options['featured'] == '4' && is_single() ) || ( $brew_options['featured'] == '3' && is_home() ) ) { ?>

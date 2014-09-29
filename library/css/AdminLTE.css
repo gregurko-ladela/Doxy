@@ -659,7 +659,7 @@ body > .header .logo .icon {
   display: none;
   list-style: none;
   padding: 0;
-  margin: 0;
+  /*margin: 0;*/
 }
 .sidebar .sidebar-menu .treeview-menu > li {
   margin: 0;
@@ -3532,4 +3532,68 @@ fieldset[disabled] .btn-vk.active {
 .btn-vk .badge {
   color: #587ea3;
   background-color: #ffffff;
+}
+/******************************************************************
+Site Name: BREW
+Author: Dan Brown
+
+Stylesheet: Footer
+
+******************************************************************/
+#footer {
+    border-top: 5px solid #428bca;
+    background: #3b3b3b;
+    padding-top: 30px;
+    /*margin-top: 60px;*/
+    clear: both;
+    color: #aaa;
+}
+#footer h4 {
+    color: #fff;
+    text-transform: uppercase;
+}
+#footer a {
+    color: #aaa;
+}
+#footer li {
+    padding: 7px 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    margin: 0px 0px;
+}
+#footer .widgettitle {
+    margin: 0;
+    padding: 0 0 15px 0;
+    border-bottom: none;
+}
+#footer-wrapper {
+    margin-bottom: 30px;
+}
+#sub-floor {
+    color: #aaa;
+    background: #292929;
+    padding: 10px 0;
+}
+.copyright {
+    text-align: center;
+}
+@media (min-width: 992px) {
+    .copyright {
+        text-align: left;
+    }
+}
+.attribution {
+    text-align: center;
+}
+@media (min-width: 992px) {
+    .attribution {
+        text-align: right;
+    }
+}
+.widgetFooter {
+    padding-bottom: 25px;
+}
+@media (min-width: 992px) {
+    .widgetFooter {
+        padding-bottom: 0px;
+    }
 }
