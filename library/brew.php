@@ -24,7 +24,7 @@ function emm_paginate($args = null) {
     $defaults = array(
         'page' => null, 'pages' => null, 
         'range' => 3, 'gap' => 3, 'anchor' => 1,
-        'before' => '<ul class="pagination">', 'after' => '</ul>',
+        'before' => '<div class="row text-center"><ul class="pagination">', 'after' => '</ul></div>',
         'nextpage' => __('&raquo;'), 'previouspage' => __('&laquo'),
         'echo' => 1
     );
