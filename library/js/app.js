@@ -41,11 +41,11 @@ jQuery(function() {
     //Activate tooltips
     jQuery("[data-toggle='tooltip']").tooltip();
 
-    /*     
+    /*
      * Add collapse and remove events to boxes
      */
     jQuery("[data-widget='collapse']").click(function() {
-        //Find the box parent        
+        //Find the box parent
         var box = jQuery(this).parents(".box").first();
         //Find the body and the footer
         var bf = box.find(".box-body, .box-footer");
@@ -87,18 +87,18 @@ jQuery(function() {
     });
 
     jQuery("[data-widget='remove']").click(function() {
-        //Find the box parent        
+        //Find the box parent
         var box = jQuery(this).parents(".box").first();
         box.slideUp();
     });
 
-    /* 
+    /*
      * Make sure that the sidebar is streched full height
      * ---------------------------------------------
      * We are gonna assign a min-height value every time the
      * wrapper gets resized and upon page load. We will use
      * Ben Alman's method for detecting the resize event.
-     * 
+     *
      **/
     function _fix() {
         //Get window height and the wrapper height
@@ -126,7 +126,7 @@ jQuery(function() {
     fix_sidebar();
 
     /*
-     * We are gonna initialize all checkbox and radio inputs to 
+     * We are gonna initialize all checkbox and radio inputs to
      * iCheck plugin in.
      * You can find the documentation at http://fronteed.com/iCheck/
      */
@@ -163,6 +163,8 @@ jQuery(function() {
 
     jQuery('.widget_search').find('.btn-primary').html('<i class="fa fa-search"></i>').addClass('btn-flat').removeClass('btn-primary');
     jQuery('.widget_search').find('.form-inline').addClass('sidebar-form');
+
+    jQuery('.breadcrumb').children().last().addClass('active');
 });
 function fix_sidebar() {
     //Make sure the body tag has the .fixed class
