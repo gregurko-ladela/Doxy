@@ -21,7 +21,7 @@
     <!-- Main content -->
 		<section class="content">
 
-			<div id="main" class="col col-lg-8 clearfix" role="main">
+      <div id="main" class="col col-lg-12 clearfix" role="main">
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
           <div class="row">
