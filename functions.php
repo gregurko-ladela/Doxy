@@ -204,7 +204,11 @@ function bones_register_sidebars() {
 // Comment Layout
 function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
-	<li <?php comment_class(); ?>>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix comment-container">
 			<div class="comment-author vcard">
 				<?php
@@ -236,6 +240,10 @@ function bones_comments( $comment, $args, $depth ) {
   			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
       </div> <!-- END comment-content -->
 		</article>
+            </div>
+        </div>
+      </div>
+    </div>
 	<?php // </li> is added by WordPress automatically ?>
 <?php
 } // don't remove this bracket!
