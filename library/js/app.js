@@ -107,7 +107,7 @@ jQuery(function() {
         var content = jQuery(".wrapper").height();
         var leftSide = jQuery(".left-side").height();
         //If the wrapper height is greater than the window
-        if (leftSide > height){
+        if (leftSide > height && leftSide > content){
             jQuery(".right-side, .left-side, html, body").css("min-height", leftSide + "px");
         }else if (content > height)
             //then set sidebar height to the wrapper
@@ -116,6 +116,8 @@ jQuery(function() {
             //Otherwise, set the sidebar to the height of the window
             jQuery(".right-side, .left-side, html, body").css("min-height", height + "px");
         }
+
+        console.log('height ' + height + '    | content:' + content + '    | leftSide:' + leftSide);
     }
     //Fire upon load
     _fix();
