@@ -107,9 +107,7 @@ jQuery(function() {
         var content = jQuery(".wrapper").height();
         var leftSide = jQuery(".left-side").height();
         //If the wrapper height is greater than the window
-        if (leftSide > height && leftSide > content){
-            jQuery(".right-side, .left-side, html, body").css("min-height", leftSide + "px");
-        }else if (content > height)
+        if (content > height)
             //then set sidebar height to the wrapper
             jQuery(".right-side, .left-side, html, body").css("min-height", content + "px");
         else {
@@ -117,7 +115,6 @@ jQuery(function() {
             jQuery(".right-side, .left-side, html, body").css("min-height", height + "px");
         }
 
-        console.log('height ' + height + '    | content:' + content + '    | leftSide:' + leftSide);
     }
     //Fire upon load
     _fix();
@@ -128,9 +125,26 @@ jQuery(function() {
     });
 
     //Fire when wrapper is resized
-    jQuery(".left-side").resize(function() {
-        _fix();
-        fix_sidebar();
+    jQuery(".sidebar").resize(function() {
+        var height = jQuery(window).height() - jQuery("body > .header").height() - (jQuery("footer").outerHeight() || 0);
+        var content = jQuery(".wrapper").height();
+        var content_min_height = jQuery(".wrapper").css('min-height');
+        var leftSide = jQuery(".left-side").height();
+        var sidebar = jQuery(".sidebar").height();
+
+        if (leftSide > content){
+            jQuery(".wrapper").css("height", leftSide + "px");
+        }
+
+        if (sidebar + 16 < content){
+            if (sidebar > content_min_height){
+                jQuery(".wrapper").css("height", (sidebar + 16) + "px");
+            }else{
+                jQuery(".wrapper").css("height", content_min_height);
+            }
+        }
+
+//        console.log('height ' + height + '    | content:' + content + '    | leftSide:' + leftSide + '    | sidebar:' + sidebar + '    | content_min_height:' + content_min_height);
     });
 
     //Fix the fixed layout sidebar scroll bug
