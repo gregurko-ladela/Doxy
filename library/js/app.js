@@ -102,11 +102,14 @@ jQuery(function() {
      **/
     function _fix() {
         //Get window height and the wrapper height
-        var height = jQuery(window).height() - jQuery("body > .header").height() - (jQuery("body > .footer").outerHeight() || 0);
+        var height = jQuery(window).height() - jQuery("body > .header").height() - (jQuery("footer").outerHeight() || 0);
         jQuery(".wrapper").css("min-height", height + "px");
         var content = jQuery(".wrapper").height();
+        var leftSide = jQuery(".left-side").height();
         //If the wrapper height is greater than the window
-        if (content > height)
+        if (leftSide > height){
+            jQuery(".right-side, .left-side, html, body").css("min-height", leftSide + "px");
+        }else if (content > height)
             //then set sidebar height to the wrapper
             jQuery(".right-side, .left-side, html, body").css("min-height", content + "px");
         else {
@@ -118,6 +121,12 @@ jQuery(function() {
     _fix();
     //Fire when wrapper is resized
     jQuery(".wrapper").resize(function() {
+        _fix();
+        fix_sidebar();
+    });
+
+    //Fire when wrapper is resized
+    jQuery(".left-side").resize(function() {
         _fix();
         fix_sidebar();
     });
