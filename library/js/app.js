@@ -102,15 +102,14 @@ jQuery(function() {
      **/
     function _fix() {
         //Get window height and the wrapper height
-        var height = jQuery(window).height() - jQuery("body > .header").height() - (jQuery("footer").outerHeight() || 0);
-        jQuery(".wrapper").css("min-height", height + "px");
+        var height = jQuery(window).height() - jQuery("body > .header").height() - (jQuery("#footer").outerHeight() || 0);
         var content = jQuery(".wrapper").height();
-        var leftSide = jQuery(".left-side").height();
-        //If the wrapper height is greater than the window
-        if (content > height)
+
+        if (content > height){
+            //If the wrapper height is greater than the window
             //then set sidebar height to the wrapper
-            jQuery(".right-side, .left-side, html, body").css("min-height", content + "px");
-        else {
+            jQuery(".right-side, .left-side, html, body, .wrapper").css("min-height", content + "px");
+        }else{
             //Otherwise, set the sidebar to the height of the window
             jQuery(".right-side, .left-side, html, body").css("min-height", height + "px");
         }

@@ -114,6 +114,11 @@ function my_class_names( $classes ) {
 	return $classes;
 }
 
+add_filter( 'the_content', 'add_custom_table_class' );
+function add_custom_table_class( $content ) {
+    return str_replace( '<table>', '<table class="table table-bordered">', $content );
+}
+
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
 	register_sidebar(array(
